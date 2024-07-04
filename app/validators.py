@@ -4,7 +4,7 @@ class ChatValidator:
     @staticmethod
     def validate_non_negative_number(value, attribute_name):
         """Валидация: неотрицательное число."""
-        v = error_value_float_error(value, attribute_name)
+        v = error_value_int_error(value, attribute_name)
         if isinstance(v, (int, float)) and v >= 0:
             return v
         else:
