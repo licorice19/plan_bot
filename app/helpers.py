@@ -90,8 +90,12 @@ async def default_handler_helper(message):
     """
     chat: Chat = await chat_helper(message)
     msg = message.text
-    parts = msg.split('+')
-
+    arg = msg.split()
+    if len(arg) > 1:
+        parts = arg[1].split('+')
+    else:
+        parts = arg[0].split('+')
+        
     beznal = None
     nal = None
     schet = None
@@ -125,5 +129,12 @@ async def default_handler_helper(message):
 
 async def help_handler_helper(message):
     chat: Chat = await chat_helper(message)
-    reply_text = 'Вводите безнал и нал: ```Пример\n[безнал]+[нал]+[счет]+[возврат] \n5585+1337+3000+1000```\nЕсли все подсчитано, то общую сумму ```Пример\n10922```\n\n/plan \[сумма\] \- Установить план \n/plan \- Посмотреть сводку по плану \n/help \- Помощь по командам\. В группе бот работает через реплай'
+    reply_text = 'Вводите безнал и нал: ```Пример\n[безнал]+[нал]+[счет]+[возврат] \n5585\+1337\+3000\+1000``` ```Варианты\nнал = n, безнал = b, счета = c, возврат = v\nn\+b\nn\+b\+c\nn\+b\+c\+v\nn\+b\-v\nn\+b\+c\-v```\nЕсли все подсчитано, то общую сумму ```Пример\n10922```\n\n/r \[безнал\]\+\[нал\]\+\[счета\]\+\[возврат\] \- расчет выручки в группe\n/plan \[сумма\] \- Установить план \n/plan \- Посмотреть сводку по плану\n/reset \- сброс выручки и плана\n/help \- Помощь по командам\. \nВ группе бот работает через реплай или команду /r'
     await bot.reply_to(message, reply_text, parse_mode='MarkdownV2')
+
+
+async def reset_handler_helper(message):
+    chat: Chat = await chat_helper(message)
+    chat.reset_values(True)
+    reply_text = "Все значения сброшены"
+    await bot.reply_to(message, reply_text)

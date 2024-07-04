@@ -91,13 +91,15 @@ class Chat:
         self.plan = ChatValidator.validate_type_integer(new_plan, "План")
         return new_plan
 
-    def reset_values(self):
+    def reset_values(self, reset_plan: bool=False):
         self._nal = 0
         self._beznal = 0
         self._schet = 0
         self._vozvrat = 0
         self._amount = 0
-    
+        if reset_plan:
+            self._plan = None
+            
     def get_plan(self):
         if self._plan is None:
             return "План не установлен."

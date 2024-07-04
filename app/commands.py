@@ -1,5 +1,5 @@
 from app import bot
-from app.helpers import start_handler_helper, plan_handler_helper, default_handler_helper, help_handler_helper
+from app.helpers import start_handler_helper, plan_handler_helper, default_handler_helper, help_handler_helper, reset_handler_helper
 
 @bot.message_handler(commands=["start"])
 async def start_handler(message):
@@ -12,6 +12,14 @@ async def plan_handler(message):
 @bot.message_handler(commands=["help"])
 async def help_handler(message):
     await help_handler_helper(message)
+
+@bot.message_handler(commands=["r"])
+async def reply_handler(message):
+    await default_handler_helper(message)
+
+@bot.message_handler(commands=["reset"])
+async def reset_handler(message):
+    await reset_handler_helper(message)
 
 @bot.message_handler()
 async def default_handler(message):
