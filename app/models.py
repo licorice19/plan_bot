@@ -28,10 +28,6 @@ class Chat:
     def amount(self, value):
         self._amount = ChatValidator.validate_non_negative_number(
             value, "Общая выручка")
-        self._beznal = 0
-        self._nal = 0
-        self._schet = 0
-        self._vozvrat = 0
 
     @property
     def plan(self):
@@ -85,7 +81,7 @@ class Chat:
 
     def _calculate_amount(self):
         if self._nal is not None and self._beznal is not None and self._schet is not None and self._vozvrat is not None:
-            self._amount = self._nal + self._beznal + self._schet - self._vozvrat
+            self.amount = self._nal + self._beznal + self._schet - self._vozvrat
 
     def set_new_plan(self, new_plan):
         self.plan = ChatValidator.validate_type_integer(new_plan, "План")
