@@ -90,18 +90,28 @@ async def default_handler_helper(message):
     """
     chat: Chat = await chat_helper(message)
     msg = message.text
-    arg = msg.replace(' ', '').split('-')  # удаляем пробелы из вводимой строки и разбиваем ее по знаку "-"
-    vozvrat = None
-    if len(arg) > 1:
-        summa, vozvrat = arg
-        parts = summa.split('+')
+    args = msg.split(' ')
+    if len(args) > 1:
+        if args[0] == '/r':
+            arg = args[1].replace(' ', '').split('-')  # удаляем пробелы из вводимой строки и разбиваем ее по знаку "-"
+            vozvrat = None
+            if len(arg) > 1:
+                summa, vozvrat = arg
+                parts = summa.split('+')
+            else:
+                parts = arg[0].split('+')
     else:
-        parts = arg[0].split('+')
+        arg = args[0].replace(' ', '').split('-')  # удаляем пробелы из вводимой строки и разбиваем ее по знаку "-"
+        vozvrat = None
+        if len(arg) > 1:
+            summa, vozvrat = arg
+            parts = summa.split('+')
+        else:
+            parts = arg[0].split('+')
 
     beznal = None
     nal = None
     schet = None
-      # определяем переменную vozvrat и присваиваем ей значение None
 
     # Парсинг частей сообщения
     if len(parts) == 2:
