@@ -1,6 +1,5 @@
 from app.validators import ChatValidator
 
-
 class Chat:
     def __init__(self, chat_id):
         self._id = None
