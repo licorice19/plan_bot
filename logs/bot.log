@@ -1,0 +1,8 @@
+2024-09-12 12:28:58,309 INFO: Bot is launching... [in /home/dima/scripts/plan_bot/app/errors.py:9]
+2024-09-12 12:29:28,982 ERROR: Invalid Общая выручка: /ert is not an integer. [in /home/dima/scripts/plan_bot/app/errors.py:18]
+Traceback (most recent call last):
+  File "/home/dima/scripts/plan_bot/app/errors.py", line 16, in error_value_int_error
+    return int(integer)
+           ^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '/ert'
+2024-09-12 12:29:40,803 INFO: Bot is launching... [in /home/dima/scripts/plan_bot/app/errors.py:9]

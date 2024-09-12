@@ -94,9 +94,7 @@ if not config._config.has_section('bot'):
     config._config.add_section('bot')
     config.set_value('bot', 'token', 'Default')
     config.set_value('bot', 'debug', True)
-    config.set_value('dsn')
     config.save()
     
 token = config.get_value('bot', 'token', 'Default')
 debug = config.get_value('bot', 'debug', True)
-dsn = config.get_value('bot', 'dsn', 'Default')
